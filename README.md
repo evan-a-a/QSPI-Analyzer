@@ -76,24 +76,20 @@ Analyzer for low level debugging of the QSPI Protocol, for use with Saleae and K
 
 #### Linux/Mac
 ---
-**Note:** I am not very familiar with CMAKE or Linux/Mac build systems, so all I can provide are basic instructions.
-- You must add these preprocessor definitions. *(or define inside QSpiAnalyzer.h)*
-    - SALEAE=1 
-    - KINGSTVIS=2
-    - ANALYZER_VERSION=SALEAE **or** ANALYZER_VERSION=KINGSTVIS
-- Add `src` to your include directories.
-
 **KingstVIS**
 I edited the make files that were included with the SDK to target the source, includes and library. 
 All that should need to be done is the preprocessor definitions.
 
 **Saleae**
-- Add `SaleaeAnalyzerSDK\include` to your include directories.
-- Add `SaleaeAnalyzerSDK\lib_x86_64` to your libraries directories
+CMake build configuration is included.
 
-Another option would be to build following Saleae's [Sample Analyzer's][sampleanalyzer] build instructions.
-I'm not sure what is generated for Linux/Mac, so I suggest [renaming to "QSPI"](https://github.com/saleae/SampleAnalyzer/tree/master#renaming-your-analyzer) before copying pasting the source files.
-Also make sure inside `QSpiAnalyer.h` and `QSpiAnalyer.cpp`, `ANALYZER_VERSION` gets renamed to `Analyzer2`.
+```
+mkdir build && cd build
+cmake ..
+make
+```
+
+The library can be found in the `build/Analyzers` directory
 
 ### Included Libraries
 ---
